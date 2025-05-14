@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>Pybo</title>
+</head>
+<body>
+    <h1>도비는 자유가 아니에요!</h1>
+    <img src="{% static 'dobby.png' %}" alt="Pybo Logo">
+
+    <h2>문제 목록</h2>
+    <table border="1" cellspacing="0" cellpadding="5">
+        <thead>
+            <tr>
+                <th>Index</th>
+                <th>Problem</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for problem in question_list %}
+                <tr>
+                    <td>{{ problem.index }}</td>
+                    <td>{{ problem.problem }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="2">등록된 문제가 없습니다.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
