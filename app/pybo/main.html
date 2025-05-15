@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>solve</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+<style>
+    .maindisplay{
+        margin:0;
+        padding:0;
+        width: 100%;
+        height: 100%;
+        background-color: blue;
+    }
+    .content1{
+        font-size: 24px;
+        color: white;
+        text-align: center;
+        padding: 40px;
+        margin: 20px;
+        background-color: #aab4f9;
+        border-radius: 20px;
+    }
+    .content2{
+        flex-direction: column;
+        gap: 20px;
+        background-color: white;
+        border-radius: 20px;
+        padding: 20px;
+        margin: 20px;
+    }
+    .content3{
+        display: flex;
+        background-color: white;
+        border-radius: 20px;
+        padding: 20px;
+        margin: 20px;
+    }
+    a{
+        text-decoration-line: none;
+    }
+</style>
+<body>
+    <header class="header">
+        <img src="{% static 'logo(pyking).png' %}" alt="logo image" class="logo">
+        <p class="menu-item active">코딩테스트</p>
+        <p class="menu-item">게시판</p>
+    </header>
+    <main class="maindisplay">
+        <div>
+            <a href="#">
+        <div class="content1">문제 이어서 시작하기
+        </div>
+        </a>
+        </div>
+        <a href="#">
+        <div class="content2">
+            <h1>문제 찾기🔍</h1>
+            <input type="text" placeholder="문제를 검색하세요." style="width:90%; padding:10px; margin:10px 0;"><br>
+            <ul>
+                <li>문제1</li>
+                <li>문제2</li>
+                <li>문제3</li>
+                <li>문제4</li>
+                <li>문제5</li>
+            </ul>
+        </a>
+        </div>
+   
+
+        <a href="#">
+            <div class="content3">
+                <h1>공지사항</h1>
+                <ul>
+                    <li>공지사항1</li>
+                    <li>공지사항2</li>
+                    <li>공지사항3</li>
+                    <li>공지사항4</li>
+                    <li>공지사항5</li>
+                </ul>
+        </div>
+        </a>
+    </main>
+</body>
+</html>
