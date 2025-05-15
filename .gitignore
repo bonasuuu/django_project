@@ -1,0 +1,8 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+
+app/app/__pycache__/
+app/app/*.pyc
+app/pybo/__pycache__/
+app/pybo/*.pyc
+app/pybo/migrations/__pycache__/
+app/pybo/migrations/*.pyc
