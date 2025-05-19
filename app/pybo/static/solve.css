@@ -1,51 +1,8 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-.header {
-  height: 80px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #eeeeee;
-  position: fixed;
-  z-index: 1000;
-  background: #fff;
-}
-
-.logo {
-  height: 40px;
-  margin: 0 80px 0 40px;
-}
-
-.menu-item {
-  background: #fff;
-  height: 100%;
-  line-height: 80px;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 0 20px;
-  cursor: pointer;
-  transition: all 100ms;
-}
-.menu-item:hover {
-  filter: brightness(0.95);
-}
-.menu-item.active {
-  box-sizing: content-box;
-  border-bottom: 3px solid #1c1c1c;
-}
-.menu-item:not(.active) {
-  color: #aaaaaa;
-}
-
 main {
   display: flex;
   height: calc(100vh - 80px);
   width: 100%;
   position: relative;
-  top: 80px;
   user-select: none;
   overflow: hidden;
 }
