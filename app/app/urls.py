@@ -21,6 +21,8 @@ from pybo import solve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
     path('solve/', solve.problem_solve_view),
+    path('ex_list/', views.ex_list),
+    path('header/', views.header),
+    path('', views.main_background),
 ]
