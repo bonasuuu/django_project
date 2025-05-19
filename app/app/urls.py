@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from pybo import views
+from pybo import solve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
+    path('solve/', solve.problem_solve_view),
 ]

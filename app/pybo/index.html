@@ -19,16 +19,13 @@
             </tr>
         </thead>
         <tbody>
-            {% for problem in question_list %}
                 <tr>
                     <td>{{ problem.index }}</td>
                     <td>{{ problem.problem }}</td>
                 </tr>
-            {% empty %}
                 <tr>
                     <td colspan="2">등록된 문제가 없습니다.</td>
                 </tr>
-            {% endfor %}
         </tbody>
     </table>
 </body>
