@@ -7,6 +7,18 @@
     <title>solve</title>
     <link rel="stylesheet" href="{% static 'solve.css' %}" />
     <script async src="{% static 'solve.js' %}"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/theme/idea.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.27.6/full/pyodide.js"></script>
   </head>
   <body>
     <header class="header">
@@ -67,17 +79,20 @@
         <section class="code-editor-section">
           <div class="editor-header">
             <p class="code-editor-title">코드작성</p>
-            <button class="practice-mode-btn">연습모드</button>
+            <div class="btn-area">
+              <button class="run-code-btn">실행하기</button>
+              <button class="practice-mode-btn">연습모드</button>
+            </div>
           </div>
           <div class="editor-area">
-            <div class="editor-line">
-              <p>1</p>
-              <input type="text" />
-            </div>
+            <textarea class="editor-textarea" id="code">
+print("Hello, CodeMirror!")</textarea
+            >
           </div>
         </section>
         <section class="code-display-section">
           <p class="code-display-title">출력</p>
+          <p class="code-display-area"></p>
         </section>
       </div>
       <section class="chatbot-section">
