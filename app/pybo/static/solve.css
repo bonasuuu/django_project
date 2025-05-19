@@ -47,12 +47,16 @@ main {
   position: relative;
   top: 80px;
   user-select: none;
+  overflow: hidden;
 }
 
 .problem-section {
-  width: 30%;
+  width: 360px;
+  min-width: 240px;
   height: 100%;
   border-right: 2px solid #1c1c1c;
+  flex-shrink: 1;
+  flex-grow: 0;
 }
 
 .problem-section > .problem-title {
@@ -93,11 +97,13 @@ main {
 }
 
 .editor-wrapper {
-  width: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 400px;
   height: 100%;
+  width: auto;
 }
 .editor-wrapper > .code-editor-section {
-  position: relative;
   width: 100%;
   height: 65%;
 }
@@ -108,14 +114,14 @@ main {
   align-items: center;
   justify-content: space-between;
   background: #1c1c1c;
-  position: absolute;
 }
 .editor-wrapper > .code-editor-section > .editor-header > .code-editor-title {
   color: #fff;
   font-weight: bold;
   margin-left: 10px;
 }
-.practice-mode-btn {
+.practice-mode-btn,
+.run-code-btn {
   border: none;
   background: #fff;
   height: fit-content;
@@ -133,33 +139,20 @@ main {
 .practice-mode-btn:active {
   filter: brightness(0.8);
 }
+.run-code-btn:hover {
+  filter: brightness(0.95);
+}
+.run-code-btn:active {
+  filter: brightness(0.8);
+}
 .editor-wrapper > .code-editor-section > .editor-area {
   width: 100%;
-  padding: 50px 10px 10px 10px;
+  height: calc(100% - 40px);
 }
-.editor-wrapper > .code-editor-section > .editor-area > .editor-line {
-  width: 100%;
-  height: 30px;
-  display: flex;
-  column-gap: 10px;
-}
-.editor-wrapper > .code-editor-section > .editor-area > .editor-line > p {
-  width: 30px;
-  text-align: end;
-  line-height: 30px;
-  color: #1c1c1c;
-  font-weight: bold;
-}
-.editor-wrapper > .code-editor-section > .editor-area > .editor-line > input {
-  width: 100%;
-  height: 100%;
-  line-height: 30px;
-  font-size: 1rem;
-  outline: none;
-  border: none;
-  color: #4c4c4c;
-  font-weight: 600;
-  padding-left: 10px;
+
+.CodeMirror {
+  width: 100% !important;
+  height: 100% !important;
 }
 .editor-wrapper > .code-display-section {
   width: 100%;
@@ -179,12 +172,20 @@ main {
   font-weight: bold;
   padding-left: 10px;
 }
-
+.editor-wrapper > .code-display-section > .code-display-area {
+  width: 100% !important;
+  height: calc(100% - 40px) !important;
+  padding: 12px 18px;
+  user-select: text;
+  white-space: pre-wrap;
+}
 .chatbot-section {
-  width: 30%;
+  width: 400px;
+  min-width: 400px;
   height: 100%;
   background: #1c1c1c;
   display: none;
+  flex-shrink: 0;
 }
 
 .chatbot-section > .chatbot-section-title {
