@@ -19,3 +19,4 @@ def main_background(request):
         'content_template': content_template,
         'question_list': question_list
     })
+    

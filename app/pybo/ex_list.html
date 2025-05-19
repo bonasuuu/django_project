@@ -1,43 +1,45 @@
-{% load static %}
-{% load custom_filters %}
+{% load static %} {% load custom_filters %}
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>문제 리스트</title>
-    <link rel="stylesheet" href="{% static 'main.css' %}">
-    <link rel="stylesheet" href="{% static 'ex_list.css' %}">
-</head>
-<div class="maindisplay">
+    <link rel="stylesheet" href="{% static 'main.css' %}" />
+    <link rel="stylesheet" href="{% static 'ex_list.css' %}" />
+  </head>
+  <div class="maindisplay">
     <div class="ex_list_div">
-        <table class="problem-table">
-            <thead>
-                <tr>
-                    <th class="column-index" style="width: 10%;">문제 번호</th>
-                    <th class="column-difficulty" style="width: 10%;">난이도</th>
-                    <th class="column-title" style="width: 80%;">제목</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for problem in question_list %}
-                    <tr class="problem-row">
-                        <td class="cell-index">{{ problem.index }}</td>
-                        <td class="cell-difficulty">{{ problem.difficulty|remove_quotes }}</td>
-                        <td class="cell-title">
-                            <a href="" class="problem-link" target="_blank">
-                                {{ problem.title|remove_quotes }}
-                            </a>
-                        </td>
-                    </tr>
-                {% empty %}
-                    <tr class="no-problem-row">
-                        <td class="no-problem-message" colspan="3">등록된 문제가 없습니다.</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+      <table class="problem-table">
+        <thead>
+          <tr>
+            <th class="column-index" style="width: 10%">문제 번호</th>
+            <th class="column-difficulty" style="width: 10%">난이도</th>
+            <th class="column-title" style="width: 80%">제목</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for problem in question_list %}
+          <tr class="problem-row">
+            <td class="cell-index">{{ problem.index }}</td>
+            <td class="cell-difficulty">
+              {{ problem.difficulty|remove_quotes }}
+            </td>
+            <td class="cell-title">
+              <a href="" class="problem-link" target="_blank">
+                {{ problem.title|remove_quotes }}
+              </a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr class="no-problem-row">
+            <td class="no-problem-message" colspan="3">
+              등록된 문제가 없습니다.
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
-</div>
-
+  </div>
 </html>
