@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from .models import Problem
 
 def index(request):
@@ -20,3 +21,12 @@ def main_background(request):
         'question_list': question_list
     })
     
+def solve_view(request):
+    problem_index = request.GET.get('problem_index')
+    problem = None
+    if problem_index:
+        try:
+            problem = Problem.objects.get(index=problem_index)
+        except Problem.DoesNotExist:
+            problem = None
+    return render(request, 'solve.html', {'problem': problem})

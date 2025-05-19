@@ -26,7 +26,11 @@
               {{ problem.difficulty|remove_quotes }}
             </td>
             <td class="cell-title">
-              <a href="" class="problem-link" target="_blank">
+              <a
+                href="/solve?problem_index={{ problem.index }}"
+                class="problem-link"
+                target="_blank"
+              >
                 {{ problem.title|remove_quotes }}
               </a>
             </td>
