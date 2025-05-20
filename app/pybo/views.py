@@ -15,8 +15,9 @@ def header(request):
 
 def main(request):
     return render(request, 'main.html')
+
 def main_background(request):
-    content_template = 'ex_list.html'  # 기본 템플릿 설정
+    content_template = 'main.html'  # 기본 템플릿 설정
     question_list = Problem.objects.all().order_by('index')
     return render(request, 'main_background.html', {
         'content_template': content_template,
@@ -45,8 +46,8 @@ def get_problem_case(request, index):
         return JsonResponse({"error": "문제를 찾을 수 없습니다."})
       
 def problem(request):
-    # question_list = Problem.objects.all().order_by('index') 
-    return render(request, 'problem.html')
+    question_list = Problem.objects.all().order_by('index')
+    return render(request, 'problem.html', {'question_list': question_list})
 
 def notice(request):
     return render(request, 'notice.html')

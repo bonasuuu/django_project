@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} {% load custom_filters %}
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -17,11 +17,20 @@
           <p class="title">제목</p>
         </div>
         <div class="content-area">
+          {% for problem in question_list %}
           <div class="line">
-            <p class="number">1</p>
-            <p class="level">LV2</p>
-            <p class="title"><a href="">사칙연산 덧셈</a></p>
+            <p class="number">{{ problem.index }}</p>
+            <p class="level">{{ problem.difficulty|remove_quotes }}</p>
+            <p class="title">
+              <a
+                href="/solve?problem_index={{ problem.index }}"
+                class="problem-link"
+              >
+                {{ problem.title|remove_quotes }}
+              </a>
+            </p>
           </div>
+          {% endfor %}
         </div>
         <div class="pageNav"></div>
       </section>
