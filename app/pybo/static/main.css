@@ -7,10 +7,14 @@
 }
 
 .header {
+  width: 100%;
   height: 80px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #eeeeee;
+  background: #fff;
+  position: fixed;
+  z-index: 9999;
 }
 
 .logo {
@@ -29,6 +33,9 @@
   transition: all 100ms;
 }
 .menu-item:hover {
+  filter: brightness(0.98);
+}
+.menu-item:active {
   filter: brightness(0.95);
 }
 .menu-item.active {
@@ -51,15 +58,17 @@
 }
 
 .menu-item:not(.active) {
-  margin-left: 20px;
   color: #aaaaaa;
 }
 
 .maindisplay {
-  margin: 0;
-  padding: 0;
+  padding-top: 80px;
   width: 100%;
   height: 100%;
   display: flow-root;
   background-color: blue;
+}
+main {
+  padding-top: 80px;
+  box-sizing: content-box;
 }
