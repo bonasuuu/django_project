@@ -13,6 +13,8 @@ def ex_list(request):
 def header(request):
     return render(request, 'header.html')
 
+def main(request):
+    return render(request, 'main.html')
 def main_background(request):
     content_template = 'ex_list.html'  # 기본 템플릿 설정
     question_list = Problem.objects.all().order_by('index')
@@ -30,7 +32,7 @@ def solve_view(request):
         except Problem.DoesNotExist:
             problem = None
     return render(request, 'solve.html', {'problem': problem})
-
+  
 def get_problem_case(request, index):
     try:
         problem = Problem.objects.get(index=index)
@@ -41,3 +43,10 @@ def get_problem_case(request, index):
         })
     except Problem.DoesNotExist:
         return JsonResponse({"error": "문제를 찾을 수 없습니다."})
+      
+def problem(request):
+    # question_list = Problem.objects.all().order_by('index') 
+    return render(request, 'problem.html')
+
+def notice(request):
+    return render(request, 'notice.html')
