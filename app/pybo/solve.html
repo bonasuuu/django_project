@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>solve</title>
+    <link rel="stylesheet" href="{% static 'solve.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/theme/idea.min.css"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.27.6/full/pyodide.js"></script>
+  </head>
+  <body>
+    {% include 'header.html' %}
+    <main class="main">
+      <section class="problem-section">
+        <p class="problem-title">문제</p>
+        <div>
+          <div class="problem-content">
+            {% if problem %}
+            <h2>{{ problem.title }}</h2>
+            <p>{{ problem.problem|linebreaksbr }}</p>
+            {% else %}
+            <p>문제를 불러올 수 없습니다.</p>
+            {% endif %}
+          </div>
+          <div class="gutter-vertical">|||</div>
+        </div>
+      </section>
+      <div class="editor-wrapper">
+        <section class="code-editor-section">
+          <div class="editor-header">
+            <p class="code-editor-title">코드작성</p>
+            <div class="btn-area">
+              <button class="run-code-btn">실행하기</button>
+              <button class="practice-mode-btn">연습모드</button>
+            </div>
+          </div>
+          <div class="editor-area">
+            <textarea class="editor-textarea" id="code">
+print("Hello, CodeMirror!")</textarea
+            >
+          </div>
+        </section>
+        <section class="code-display-section">
+          <p class="code-display-title">출력</p>
+          <p class="code-display-area"></p>
+        </section>
+      </div>
+      <section class="chatbot-section">
+        <p class="chatbot-section-title">챗봇임</p>
+      </section>
+    </main>
+    <script defer src="{% static 'solve.js' %}"></script>
+  </body>
+</html>

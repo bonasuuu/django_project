@@ -1,0 +1,49 @@
+main {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  background: #00f;
+}
+
+section {
+  width: calc(100% - 72px);
+  min-height: calc(100vh - 160px);
+  margin: 40px 36px;
+  border-radius: 30px;
+  padding: 30px;
+  background: #fff;
+}
+.title-area {
+  display: flex;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.number {
+  min-width: 100px;
+  border-right: 2px solid #ccc;
+}
+.level {
+  min-width: 80px;
+  border-right: 2px solid #ccc;
+}
+.title {
+  width: 100%;
+}
+
+.content-area .line {
+  display: flex;
+  text-align: center;
+  padding: 14px 0;
+  border-bottom: 2px solid #eee;
+}
+.content-area .line > p {
+  border-right: 2px solid #fff;
+}
+.content-area .line > .title {
+  padding-left: 20px;
+  display: block;
+  text-align: start;
+}
+.content-area .line > p > a {
+  color: #333;
+}
