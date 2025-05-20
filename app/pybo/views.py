@@ -13,6 +13,8 @@ def ex_list(request):
 def header(request):
     return render(request, 'header.html')
 
+def main(request):
+    return render(request, 'main.html')
 def main_background(request):
     content_template = 'ex_list.html'  # 기본 템플릿 설정
     question_list = Problem.objects.all().order_by('index')
