@@ -30,3 +30,14 @@ def solve_view(request):
         except Problem.DoesNotExist:
             problem = None
     return render(request, 'solve.html', {'problem': problem})
+
+def get_problem_case(request, index):
+    try:
+        problem = Problem.objects.get(index=index)
+        return JsonResponse({
+            "title": problem.title,
+            "difficulty": problem.difficulty,
+            "testCase": problem.testCase,  # ✅ 필드 이름 반드시 testCase
+        })
+    except Problem.DoesNotExist:
+        return JsonResponse({"error": "문제를 찾을 수 없습니다."})

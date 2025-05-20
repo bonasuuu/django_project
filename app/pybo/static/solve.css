@@ -135,6 +135,7 @@ main {
   padding: 12px 18px;
   user-select: text;
   white-space: pre-wrap;
+  overflow: auto;
 }
 .chatbot-section {
   width: 400px;
