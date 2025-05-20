@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'problem.css' %}" />
+    <title>problem</title>
+  </head>
+  <body>
+    {% include 'header.html' %}
+    <main>
+      <section>
+        <div class="title-area">
+          <p class="number">문제 번호</p>
+          <p class="level">난이도</p>
+          <p class="title">제목</p>
+        </div>
+        <div class="content-area">
+          <div class="line">
+            <p class="number">1</p>
+            <p class="level">LV2</p>
+            <p class="title"><a href="">사칙연산 덧셈</a></p>
+          </div>
+        </div>
+        <div class="pageNav"></div>
+      </section>
+    </main>
+  </body>
+</html>

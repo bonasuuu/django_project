@@ -22,6 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('solve/', views.solve_view),
     path('ex_list/', views.ex_list),
+    path('problem/', views.problem),
+    path('notice/', views.notice),
     path('header/', views.header),
     path('', views.main_background),
 ]
