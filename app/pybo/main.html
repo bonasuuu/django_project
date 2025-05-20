@@ -1,88 +1,210 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>solve</title>
-    <link rel="stylesheet" href="{% static 'main.css' %}">
-</head>
-<style>
-    .maindisplay{
-        margin:0;
-        padding:0;
+  </head>
+  <style>
+    input::placeholder {
+      color: white;
+    }
+    .total {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      background-color: blue;
+    }
+    .content1-wrapper {
+      position: relative;top: 5px;
+      width: 100%;
+      height: 800px;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+    .content1 {
+      font-size: 24px;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      justify-self: center;
+      align-self: center;
+      border-radius: 20px;
+      height: 100%;
+    }
+    .image-container{
+        position: absolute;
+        margin: 0;
         width: 100%;
         height: 100%;
-        background-color: blue;
     }
-    .content1{
-        font-size: 24px;
-        color: white;
-        text-align: center;
-        padding: 40px;
-        margin: 20px;
-        background-color: #aab4f9;
-        border-radius: 20px;
+    .content1img{
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 10px;
+        display: block;
     }
-    .content2{
-        flex-direction: column;
-        gap: 20px;
-        background-color: white;
-        border-radius: 20px;
-        padding: 20px;
-        margin: 20px;
-    }
-    .content3{
-        display: flex;
-        background-color: white;
-        border-radius: 20px;
-        padding: 20px;
-        margin: 20px;
-    }
-    a{
-        text-decoration-line: none;
-    }
-</style>
-<body>
-    <header class="header">
-        <img src="{% static 'logo(pyking).png' %}" alt="logo image" class="logo">
-        <p class="menu-item active">코딩테스트</p>
-        <p class="menu-item">게시판</p>
-    </header>
-    <main class="maindisplay">
-        <div>
-            <a href="#">
-        <div class="content1">문제 이어서 시작하기
-        </div>
-        </a>
-        </div>
-        <a href="#">
-        <div class="content2">
-            <h1>문제 찾기🔍</h1>
-            <input type="text" placeholder="문제를 검색하세요." style="width:90%; padding:10px; margin:10px 0;"><br>
-            <ul>
-                <li>문제1</li>
-                <li>문제2</li>
-                <li>문제3</li>
-                <li>문제4</li>
-                <li>문제5</li>
-            </ul>
-        </a>
-        </div>
-   
 
-        <a href="#">
-            <div class="content3">
-                <h1>공지사항</h1>
-                <ul>
-                    <li>공지사항1</li>
-                    <li>공지사항2</li>
-                    <li>공지사항3</li>
-                    <li>공지사항4</li>
-                    <li>공지사항5</li>
+    .text1 {
+    position: absolute;
+    top: 80%;
+    left: 68%;
+    transform: translate(-50%,-40%);
+    width: 100%;
+    font-size: 45px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 2px 2px 5px rgb(0, 0, 0,0.7);
+
+    }
+    .content23-wrapper {
+    height: 100%;
+      width: 100%;
+      margin: 0;
+      position: relative;
+      align-items: center;
+      top: auto;
+    }
+
+    .content2 {
+      justify-self: center;
+      align-self: center;
+      background-color: white;
+      border-radius: 20px;
+      margin: 20px;
+      width: 90%;
+      height: auto;
+      padding: 15px;
+      position: relative; top: auto;
+    }
+    .searchimg{
+        width:auto;
+    }
+    .question-list{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        justify-self: center;
+    }
+    .question-item{
+        background-color: #f3f3f3;
+        width: 95%;
+        border-radius: 15px;
+        padding: 10px;
+        display: flex;
+        align-self: center;
+        cursor: pointer;
+        transition: background 0.2s;
+        height: 20px;
+        margin: 10px;
+    }
+    
+    .content3 {
+      justify-self: center;
+      align-self: center;
+      background-color: white;
+      border-radius: 20px;
+      margin: 20px;
+      width: 90%;
+      height: 100%;
+      padding: 20px;
+    }
+    .noticeimg{
+        width: auto;
+    }
+    .noitce-list{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        height: auto;
+        width: 100%;
+        justify-self: center;
+    }
+    .notice-item{
+        background-color: #f3f3f3;
+        width: 95%;
+        border-radius: 15px;
+        display: flex;
+        align-self: center;
+        cursor: pointer;
+        transition: background 0.2s;
+        height: 40px;
+        margin: 10px;
+    }
+    a {
+      text-decoration-line: none;
+    }
+  </style>
+
+  <body>
+    <div class="total">
+      <div class="content1-wrapper">
+        <div class="content1">
+            <a href="#">
+                <div class="ime-container">
+            <img src="{% static 'content1.png' %}" class="content1img">
+                </div>
+    </a>
+      </div>
+      </div>
+       <p class="text1">문제 이어서 시작하기</p>
+      <div class="content23-wrapper">
+        <div class="content2">
+            <h1 style="text-align: center; color:black">문제 찾기
+                <img src="{% static 'searchicon.png' %}" class="searchimg">
+            </h1>
+            <input
+              type="text"
+              placeholder="문제를 검색하세요."
+              style="
+                border-width: 0;
+                border-radius: 20px;
+                width: 95%;
+                height: 30px;
+                padding: 10px;
+                margin: 10px;
+                background: linear-gradient(90deg, #7a7aff, #0000ff);
+              "
+            /><div>
+              <ul class="question-list">
+                <li class="question-item">
+                    <a href="#"></a> <!--문제1번-->
+                </li>
+                 <li class="question-item">
+                    <a href="#"></a> <!--문제2번-->
+                 </li>
+                  <li class="question-item">
+                    <a href="#"></a> <!--문제3번-->
+                </li>
+                 <li class="question-item">
+                    <a href="#"></a> <!--문제4번-->
+                 </li>
+                  <li class="question-item">
+                    <a href="#"></a> <!--문제5번-->
+                </li>
                 </ul>
+            </div>
+          </a>
         </div>
-        </a>
-    </main>
-</body>
+        <div class="content3">
+          <a href="#"></a>
+          <h1 style="text-align: center;">공지사항<img src="{% static 'noticeicon.png' %}" class="noticeimg"></h1>
+          <div>
+            <ul class="notice-list">
+              <li class="notice-item">공지사항1
+                <a href="#"></a>
+                </li>
+              <li class="notice-item">공지사항2</li>
+              <li class="notice-item">공지사항3</li>
+            </ul>
+          </div>
+        </div>
+  </body>
 </html>

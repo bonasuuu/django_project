@@ -11,3 +11,6 @@ def ex_list(request):
 
 def header(request):
     return render(request, 'header.html')
+
+def main(request):
+    return render(request, 'main.html')

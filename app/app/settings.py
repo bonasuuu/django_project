@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'clearcache',
     'pybo.apps.PyboConfig',
     'django.contrib.admin',
     'django.contrib.auth',
