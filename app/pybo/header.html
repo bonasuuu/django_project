@@ -6,10 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>문제 리스트</title>
     <link rel="stylesheet" href="{% static 'main.css' %}" />
+    <script defer src="{% static 'header.js' %}"></script>
   </head>
   <header class="header">
-    <img src="{% static 'logo(pyking).png' %}" alt="logo image" class="logo" />
-    <p class="menu-item active">코딩테스트</p>
-    <p class="menu-item">게시판</p>
+    <a href="/"
+      ><img
+        src="{% static 'logo(pyking).png' %}"
+        alt="logo image"
+        class="logo"
+        id="logo"
+    /></a>
+    <p class="menu-item" id="coding">코딩테스트</p>
+    <p class="menu-item" id="notice">게시판</p>
   </header>
 </html>
