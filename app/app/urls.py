@@ -25,6 +25,6 @@ urlpatterns = [
     path('problem/', views.problem),
     path('notice/', views.notice),
     path('header/', views.header),
-    path('main/', views.main),
-    path('', views.index),
+    path('', views.main_background),
+    path("api/problem/<int:index>/", views.get_problem_case, name="get_problem_case"),
 ]
