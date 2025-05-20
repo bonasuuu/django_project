@@ -30,3 +30,10 @@ def solve_view(request):
         except Problem.DoesNotExist:
             problem = None
     return render(request, 'solve.html', {'problem': problem})
+
+def problem(request):
+    # question_list = Problem.objects.all().order_by('index') 
+    return render(request, 'problem.html')
+
+def notice(request):
+    return render(request, 'notice.html')
