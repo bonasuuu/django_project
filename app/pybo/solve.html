@@ -58,6 +58,20 @@ print("Hello, CodeMirror!")</textarea
       </div>
       <section class="chatbot-section">
         <p class="chatbot-section-title">챗봇임</p>
+        <div class="chatbot">
+          <div class="chat-area">
+            <div class="chat-log" id="chat-log"></div>
+            <form id="chat-form">
+              {% csrf_token %}
+              <textarea
+                id="chat-input"
+                placeholder="질문을 입력하세요..."
+                rows="2"
+              ></textarea>
+              <button type="submit">전송</button>
+            </form>
+          </div>
+        </div>
       </section>
     </main>
     <script defer src="{% static 'solve.js' %}"></script>

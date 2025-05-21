@@ -101,6 +101,62 @@ if (practiceModeBtn && chatbotSection) {
   practiceModeBtn.addEventListener("click", () => {
     const isVisible = chatbotSection.style.display === "block";
     chatbotSection.style.display = isVisible ? "none" : "block";
-    console.log("clicked btn");
   });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const chatForm = document.getElementById("chat-form");
+  const chatInput = document.getElementById("chat-input");
+  const chatLog = document.getElementById("chat-log");
+
+  chatForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const userMessage = chatInput.value.trim();
+    if (!userMessage) return;
+
+    appendMessage("나", userMessage);
+
+    chatInput.value = "";
+
+    fetch("/chatbot/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": getCSRFToken(),
+      },
+      body: JSON.stringify({ message: userMessage }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        appendMessage("GPT", data.reply);
+      })
+      .catch((err) => {
+        appendMessage("❌ 오류", "서버 오류 발생", err);
+      });
+  });
+
+  function appendMessage(sender, text) {
+    const msg = document.createElement("div");
+    msg.classList.add("chat-message");
+
+    if (sender === "나") {
+      msg.classList.add("chat-user");
+    } else {
+      msg.classList.add("chat-gpt");
+    }
+
+    const p = document.createElement("p");
+    p.innerHTML = `<strong>${sender}:</strong> ${text}`;
+    msg.appendChild(p);
+
+    chatLog.appendChild(msg);
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  function getCSRFToken() {
+    return document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("csrftoken="))
+      ?.split("=")[1];
+  }
+});

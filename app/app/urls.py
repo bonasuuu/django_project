@@ -26,4 +26,5 @@ urlpatterns = [
     path('notice/', views.notice),
     path('header/', views.header),
     path('', views.main_background),
+    path("chatbot/", views.chatbot),
 ]
