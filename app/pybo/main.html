@@ -11,7 +11,7 @@
     <main>
       <div class="wrap">
         <a href="/solve?problem_index=1" class="content1">
-          <img src="{% static 'content1.png' %}" class="content1img" />
+          <img src="{% static 'content1.png' %}" />
           <p class="text1">문제 이어서 시작하기</p>
         </a>
         <div class="content23-wrapper">
@@ -22,18 +22,18 @@
             </div>
             <input type="text" placeholder="문제를 검색하세요." />
             <ul class="question-list">
-              <li class="question-item">
-                <a href="/solve?problem_index=1">1 A+B</a>
-              </li>
-              <li class="question-item">
-                <a href="/solve?problem_index=2">2 시험 성적</a>
-              </li>
-              <li class="question-item">
-                <a href="/solve?problem_index=3">3 윤년</a>
-              </li>
-              <li class="question-item">
-                <a href="/solve?problem_index=4">4 사분면 고르기</a>
-              </li>
+              <a href="/solve?problem_index=1"
+                ><li class="question-item">1 A+B</li></a
+              >
+              <a href="/solve?problem_index=2"
+                ><li class="question-item">2 시험 성적</li></a
+              >
+              <a href="/solve?problem_index=3">
+                <li class="question-item">3 윤년</li>
+              </a>
+              <a href="/solve?problem_index=4">
+                <li class="question-item">4 사분면 고르기</li>
+              </a>
             </ul>
           </section>
           <section class="content3">
