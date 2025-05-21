@@ -10,7 +10,7 @@
   <body>
     <main>
       <div class="wrap">
-        <a href="#" class="content1">
+        <a href="/solve?problem_index=1" class="content1">
           <img src="{% static 'content1.png' %}" class="content1img" />
           <p class="text1">문제 이어서 시작하기</p>
         </a>
@@ -23,16 +23,16 @@
             <input type="text" placeholder="문제를 검색하세요." />
             <ul class="question-list">
               <li class="question-item">
-                <a href="#">1번 A+B</a>
+                <a href="/solve?problem_index=1">1 A+B</a>
               </li>
               <li class="question-item">
-                <a href="#">1</a>
+                <a href="/solve?problem_index=2">2 시험 성적</a>
               </li>
               <li class="question-item">
-                <a href="#">1</a>
+                <a href="/solve?problem_index=3">3 윤년</a>
               </li>
               <li class="question-item">
-                <a href="#">1</a>
+                <a href="/solve?problem_index=4">4 사분면 고르기</a>
               </li>
             </ul>
           </section>
@@ -41,17 +41,55 @@
               <h1 style="text-align: center">공지사항</h1>
               <img src="{% static 'noticeicon.png' %}" class="noticeimg" />
             </div>
-            <ul class="notice-list">
-              <li class="notice-item">
-                공지사항1
-                <a href="#"></a>
+            <ul class="notice-list" id="noticeList">
+              <li class="notice-item" onclick="toggleNotice(this, 0)">
+                1 업데이트 내역
               </li>
-              <li class="notice-item">공지사항2</li>
-              <li class="notice-item">공지사항3</li>
+              <p class="notice-content">
+                2025.05.19 - 서버 운영 시작<br />
+                2025.05.20 - 페이지간 연동 및 메인페이지 구현<br />
+                2025.05.21 - 문제 추가<br />
+              </p>
+              <li class="notice-item" onclick="toggleNotice(this, 1)">
+                2 개발자 모집
+              </li>
+              <p class="notice-content">
+                <a
+                  href="https://url.kr/dc9smj"
+                  target="_blank"
+                  class="notice-a"
+                  style="font-size: 20px"
+                  >바로가기</a
+                >
+              </p>
+              <li class="notice-item" onclick="toggleNotice(this, 2)">
+                3 질문하기
+              </li>
+              <p class="notice-content">
+                질문하기는 게시판을 이용하여주시기 바랍니다
+              </p>
             </ul>
           </section>
         </div>
       </div>
     </main>
   </body>
+  <script>
+    let activeIndex = null;
+
+    function toggleNotice(element, index) {
+      const contents = document.querySelectorAll(".notice-content");
+
+      if (activeIndex === index) {
+        // 이미 열려 있는 항목을 다시 클릭 → 닫기
+        contents[index].style.display = "none";
+        activeIndex = null;
+      } else {
+        // 다른 항목 클릭 → 기존 열림 닫고 새로 열기
+        contents.forEach((content) => (content.style.display = "none"));
+        contents[index].style.display = "block";
+        activeIndex = index;
+      }
+    }
+  </script>
 </html>

@@ -83,7 +83,7 @@ main {
   width: 100%;
   background-color: #eee;
   line-height: 36px;
-  border-radius: 18px;
+  border-radius: 9px;
   height: 36px;
   border: none;
   margin-bottom: 8px;
@@ -105,7 +105,7 @@ main {
   width: 100%;
   height: 40%;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 11px;
   padding: 10px 30px;
   overflow: hidden;
 }
@@ -114,14 +114,22 @@ main {
 }
 .notice-item {
   width: 100%;
-  background-color: #eee;
+  background-color: rgb(201, 201, 201);
   padding-left: 16px;
-  height: 35px;
+  min-height: 35px;
   font-size: 14px;
   line-height: 30px;
   margin-top: 10px;
-  border-radius: 18px;
+  border-radius: 9px;
   transition: all 0.1s;
+  cursor: pointer;
+}
+.notice-content {
+  display: none;
+  padding: 8px;
+  background-color: #f1f1f1;
+  border-radius: 9px;
+  font-size: 13px;
   cursor: pointer;
 }
 
@@ -131,6 +139,7 @@ main {
 .notice-item:active {
   filter: brightness(0.9);
 }
+
 .content3 > div {
   display: flex;
   align-items: center;
