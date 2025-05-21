@@ -1,6 +1,38 @@
+import json
 from django.shortcuts import render
-from django.http import JsonResponse
 from .models import Problem
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+
+from openai import OpenAI
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+@csrf_exempt
+def chatbot(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            user_message = data.get("message", "")
+
+            response = client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[{"role": "user", "content": user_message}]
+            )
+
+            bot_reply = response.choices[0].message.content.strip()
+            return JsonResponse({"message": bot_reply})
+
+        except Exception as e:
+            print("❌ 예외 발생:", e)
+            return JsonResponse({"error": str(e)}, status=500)
+
+    return JsonResponse({"error": "Invalid request method"}, status=405)
+
 
 def index(request):
     question_list = Problem.objects.all().order_by('index')
