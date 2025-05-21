@@ -25,6 +25,5 @@ urlpatterns = [
     path('problem/', views.problem),
     path('notice/', views.notice),
     path('header/', views.header),
-    path('main/', views.main),
     path('', views.index),
 ]
