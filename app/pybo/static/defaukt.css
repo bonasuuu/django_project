@@ -1,0 +1,82 @@
+/* header.html 관련 CSS 입니다 */
+/* 전체 margin padding 선언하였음 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  all: unset;
+}
+
+.header {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eeeeee;
+  background: #fff;
+  position: fixed;
+  z-index: 9999;
+}
+
+.logo {
+  height: 50px;
+  margin: 0 40px 0 20px;
+}
+
+.menu-item {
+  background: #fff;
+  height: 100%;
+  line-height: 80px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: all 100ms;
+}
+.menu-item:hover {
+  filter: brightness(0.98);
+}
+.menu-item:active {
+  filter: brightness(0.95);
+}
+.menu-item.active {
+  box-sizing: content-box;
+  border-bottom: 3px solid #1c1c1c;
+}
+.menu-item:not(.active) {
+  color: #aaaaaa;
+}
+
+.menu-item {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.menu-item.active {
+  height: 100%;
+  border-bottom: 1px solid #000000;
+  line-height: 80px;
+}
+
+.menu-item:not(.active) {
+  color: #aaaaaa;
+}
+
+.maindisplay {
+  padding-top: 80px;
+  width: 100%;
+  height: 100%;
+  display: flow-root;
+  background-color: blue;
+}
+main {
+  padding-top: 80px;
+  box-sizing: content-box;
+}
