@@ -28,3 +28,5 @@ urlpatterns = [
     path('', views.main_background),
     path("chatbot/", views.chatbot),
 ]
+    path("api/problem/<int:index>/", views.get_problem_case, name="get_problem_case"),
+]

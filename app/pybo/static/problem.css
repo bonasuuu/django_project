@@ -2,6 +2,7 @@ main {
   width: 100%;
   min-height: calc(100vh - 80px);
   background: #00f;
+  display: inline-block;
 }
 
 section {
@@ -29,21 +30,32 @@ section {
 .title {
   width: 100%;
 }
-
 .content-area .line {
   display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.content-area .number {
+  width: 80px;
   text-align: center;
-  padding: 14px 0;
-  border-bottom: 2px solid #eee;
+  border-right: 2px solid #ccc;
 }
-.content-area .line > p {
-  border-right: 2px solid #fff;
+
+.content-area .level {
+  width: 60px;
+  text-align: center;
+  border-right: 2px solid #ccc;
 }
-.content-area .line > .title {
+
+.content-area .title {
+  flex: 1;
   padding-left: 20px;
-  display: block;
-  text-align: start;
+  text-align: left;
 }
-.content-area .line > p > a {
+
+.problem-link {
   color: #333;
+  text-decoration: none;
 }

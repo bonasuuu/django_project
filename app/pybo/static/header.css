@@ -1,0 +1,35 @@
+/* header.html 관련 CSS 입니다 */
+/* 전체 margin padding 선언하였음 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.logo {
+    height: 50px;
+    margin: 0 40px 0 20px;
+}
+
+.menu-item {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.menu-item.active {
+    height: 100%;
+    border-bottom: 1px solid #000000;
+    line-height: 80px;
+}
+
+.menu-item:not(.active) {
+    margin-left: 20px;
+    color: #AAAAAA;
+}
+

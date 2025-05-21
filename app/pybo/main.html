@@ -1,88 +1,95 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>solve</title>
-    <link rel="stylesheet" href="{% static 'main.css' %}">
-</head>
-<style>
-    .maindisplay{
-        margin:0;
-        padding:0;
-        width: 100%;
-        height: 100%;
-        background-color: blue;
-    }
-    .content1{
-        font-size: 24px;
-        color: white;
-        text-align: center;
-        padding: 40px;
-        margin: 20px;
-        background-color: #aab4f9;
-        border-radius: 20px;
-    }
-    .content2{
-        flex-direction: column;
-        gap: 20px;
-        background-color: white;
-        border-radius: 20px;
-        padding: 20px;
-        margin: 20px;
-    }
-    .content3{
-        display: flex;
-        background-color: white;
-        border-radius: 20px;
-        padding: 20px;
-        margin: 20px;
-    }
-    a{
-        text-decoration-line: none;
-    }
-</style>
-<body>
-    <header class="header">
-        <img src="{% static 'logo(pyking).png' %}" alt="logo image" class="logo">
-        <p class="menu-item active">코딩테스트</p>
-        <p class="menu-item">게시판</p>
-    </header>
-    <main class="maindisplay">
-        <div>
-            <a href="#">
-        <div class="content1">문제 이어서 시작하기
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메인페이지</title>
+  </head>
+  <link rel="stylesheet" href="{% static 'main.css' %}" />
+  <body>
+    <main>
+      <div class="wrap">
+        <a href="/solve?problem_index=1" class="content1">
+          <img src="{% static 'content1.png' %}" class="content1img" />
+          <p class="text1">문제 이어서 시작하기</p>
         </a>
-        </div>
-        <a href="#">
-        <div class="content2">
-            <h1>문제 찾기🔍</h1>
-            <input type="text" placeholder="문제를 검색하세요." style="width:90%; padding:10px; margin:10px 0;"><br>
-            <ul>
-                <li>문제1</li>
-                <li>문제2</li>
-                <li>문제3</li>
-                <li>문제4</li>
-                <li>문제5</li>
+        <div class="content23-wrapper">
+          <section class="content2">
+            <div>
+              <h1>문제 찾기</h1>
+              <img src="{% static 'searchicon.png' %}" class="searchimg" />
+            </div>
+            <input type="text" placeholder="문제를 검색하세요." />
+            <ul class="question-list">
+              <li class="question-item">
+                <a href="/solve?problem_index=1">1 A+B</a>
+              </li>
+              <li class="question-item">
+                <a href="/solve?problem_index=2">2 시험 성적</a>
+              </li>
+              <li class="question-item">
+                <a href="/solve?problem_index=3">3 윤년</a>
+              </li>
+              <li class="question-item">
+                <a href="/solve?problem_index=4">4 사분면 고르기</a>
+              </li>
             </ul>
-        </a>
+          </section>
+          <section class="content3">
+            <div>
+              <h1 style="text-align: center">공지사항</h1>
+              <img src="{% static 'noticeicon.png' %}" class="noticeimg" />
+            </div>
+            <ul class="notice-list" id="noticeList">
+              <li class="notice-item" onclick="toggleNotice(this, 0)">
+                1 업데이트 내역
+              </li>
+              <p class="notice-content">
+                2025.05.19 - 서버 운영 시작<br />
+                2025.05.20 - 페이지간 연동 및 메인페이지 구현<br />
+                2025.05.21 - 문제 추가<br />
+              </p>
+              <li class="notice-item" onclick="toggleNotice(this, 1)">
+                2 개발자 모집
+              </li>
+              <p class="notice-content">
+                <a
+                  href="https://url.kr/dc9smj"
+                  target="_blank"
+                  class="notice-a"
+                  style="font-size: 20px"
+                  >바로가기</a
+                >
+              </p>
+              <li class="notice-item" onclick="toggleNotice(this, 2)">
+                3 질문하기
+              </li>
+              <p class="notice-content">
+                질문하기는 게시판을 이용하여주시기 바랍니다
+              </p>
+            </ul>
+          </section>
         </div>
-   
-
-        <a href="#">
-            <div class="content3">
-                <h1>공지사항</h1>
-                <ul>
-                    <li>공지사항1</li>
-                    <li>공지사항2</li>
-                    <li>공지사항3</li>
-                    <li>공지사항4</li>
-                    <li>공지사항5</li>
-                </ul>
-        </div>
-        </a>
+      </div>
     </main>
-</body>
+  </body>
+  <script>
+    let activeIndex = null;
+
+    function toggleNotice(element, index) {
+      const contents = document.querySelectorAll(".notice-content");
+
+      if (activeIndex === index) {
+        // 이미 열려 있는 항목을 다시 클릭 → 닫기
+        contents[index].style.display = "none";
+        activeIndex = null;
+      } else {
+        // 다른 항목 클릭 → 기존 열림 닫고 새로 열기
+        contents.forEach((content) => (content.style.display = "none"));
+        contents[index].style.display = "block";
+        activeIndex = index;
+      }
+    }
+  </script>
 </html>
