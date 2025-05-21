@@ -34,8 +34,7 @@ if (gutterVertical && problemSection) {
     }
   });
 }
-
-// 코드 작성 CodeMirror가져오기
+// ✅ CodeMirror 에디터 설정
 const codeTextarea = document.getElementById("code");
 let editor = null;
 
@@ -47,27 +46,50 @@ if (codeTextarea) {
   });
 }
 
-//코드 실행 pyodide사용
+// ✅ Pyodide 초기화
 let pyodide = null;
 
 async function initPyodide() {
   pyodide = await loadPyodide();
   console.log("Pyodide loaded");
 }
-
 initPyodide();
+const problemIndex = getProblemIndexFromURL();
+if (problemIndex) {
+  loadProblem(problemIndex);
+} else {
+  codeDisplayArea.textContent = "❌ URL에 problem_index가 없습니다.";
+}
 
-// 있으면 input값 변경
-const testInput = `5\n`;
+let testCases = [];
 
-if (runCodeBtn && codeDisplayArea && editor) {
-  runCodeBtn.addEventListener("click", async () => {
-    if (!pyodide) {
-      alert("Pyodide is still loading...");
+function getProblemIndexFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  return parseInt(params.get("problem_index"));
+}
+
+async function loadProblem(index) {
+  try {
+    const response = await fetch(`/api/problem/${index}/`);
+    const data = await response.json();
+
+    if (data.error) {
+      codeDisplayArea.textContent = "문제 로딩 실패: " + data.error;
       return;
     }
+    testCases = data.testCase;
+  } catch (err) {
+    codeDisplayArea.textContent = "문제 불러오기 중 오류 발생: " + err.message;
+  }
+}
 
-    const code = editor.getValue();
+runCodeBtn.addEventListener("click", async () => {
+  const code = editor.getValue();
+  let finalOutput = "";
+
+  for (let i = 0; i < testCases.length; i++) {
+    const testInput = testCases[i].input;
+    const expectedOutput = testCases[i].output;
     let output = "";
 
     try {
@@ -78,9 +100,8 @@ if (runCodeBtn && codeDisplayArea && editor) {
         batched: (msg) => (output += msg),
       });
 
-      let inputLines = testInput.split("\n");
+      const inputLines = testInput.trim().split("\n");
       let inputIndex = 0;
-      // input값이 받는지 않받는지 예외처리
       pyodide.globals.set("input", () => {
         if (inputIndex < inputLines.length) {
           return inputLines[inputIndex++];
@@ -89,14 +110,25 @@ if (runCodeBtn && codeDisplayArea && editor) {
       });
 
       await pyodide.runPythonAsync(code);
-      codeDisplayArea.textContent = output;
-    } catch (err) {
-      codeDisplayArea.textContent = err;
-    }
-  });
-}
+      const userOutput = output.trim();
+      const expected = expectedOutput.trim();
 
-// 연습모드 챗본창 켜기
+      if (userOutput === expected) {
+        finalOutput += `✅ 테스트 ${i + 1} 통과\n`;
+      } else {
+        finalOutput += `❌ 테스트 ${
+          i + 1
+        } 실패\n출력: ${userOutput}\n기댓값: ${expected}\n\n`;
+      }
+    } catch (err) {
+      finalOutput += `❌ 테스트 ${i + 1} 중 오류 발생: ${err.message}\n\n`;
+    }
+  }
+
+  codeDisplayArea.textContent = finalOutput;
+});
+
+// 연습모드 챗봇창 켜기
 if (practiceModeBtn && chatbotSection) {
   practiceModeBtn.addEventListener("click", () => {
     const isVisible = chatbotSection.style.display === "block";
