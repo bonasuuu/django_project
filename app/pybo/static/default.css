@@ -70,14 +70,10 @@ a {
   color: #aaaaaa;
 }
 
-.maindisplay {
-  padding-top: 80px;
-  width: 100%;
-  height: 100%;
-  display: flow-root;
-  background-color: blue;
-}
 main {
+  width: 100%;
+  min-height: calc(100vh - 80px);
   padding-top: 80px;
+  background: linear-gradient(45deg, rgb(98, 0, 255) 60%, #00f);
   box-sizing: content-box;
 }

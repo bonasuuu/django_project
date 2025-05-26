@@ -58,7 +58,7 @@ const problemIndex = getProblemIndexFromURL();
 if (problemIndex) {
   loadProblem(problemIndex);
 } else {
-  codeDisplayArea.textContent = "❌ URL에 problem_index가 없습니다.";
+  codeDisplayArea.textContent = "URL에 problem_index가 없습니다.";
 }
 
 let testCases = [];
@@ -83,6 +83,7 @@ async function loadProblem(index) {
   }
 }
 
+// 코드 실행
 runCodeBtn.addEventListener("click", async () => {
   const code = editor.getValue();
   let finalOutput = "";
@@ -114,14 +115,14 @@ runCodeBtn.addEventListener("click", async () => {
       const expected = expectedOutput.trim();
 
       if (userOutput === expected) {
-        finalOutput += `✅ 테스트 ${i + 1} 통과\n`;
+        finalOutput += `테스트 ${i + 1} 통과\n`;
       } else {
-        finalOutput += `❌ 테스트 ${
+        finalOutput += `테스트 ${
           i + 1
         } 실패\n출력: ${userOutput}\n기댓값: ${expected}\n\n`;
       }
     } catch (err) {
-      finalOutput += `❌ 테스트 ${i + 1} 중 오류 발생: ${err.message}\n\n`;
+      finalOutput += `테스트 ${i + 1} 중 오류 발생: ${err.message}\n\n`;
     }
   }
 
@@ -136,6 +137,7 @@ if (practiceModeBtn && chatbotSection) {
   });
 }
 
+// 챗봇 대화 출력
 document.addEventListener("DOMContentLoaded", function () {
   const chatForm = document.getElementById("chat-form");
   const chatInput = document.getElementById("chat-input");
@@ -163,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
         appendMessage("GPT", data.reply);
       })
       .catch((err) => {
-        appendMessage("❌ 오류", "서버 오류 발생", err);
+        appendMessage("오류", "서버 오류 발생", err);
       });
   });
 
