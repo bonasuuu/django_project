@@ -1,11 +1,6 @@
-main {
-  width: 100%;
-  height: calc(100vh - 80px);
-  background: #00f;
-}
 .wrap {
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 80px);
   padding: 24px;
   display: flex;
   column-gap: 24px;
