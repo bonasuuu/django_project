@@ -27,5 +27,9 @@ urlpatterns = [
     path('header/', views.header),
     path('', views.main_background),
     path("chatbot/", views.chatbot),
+    path("blog/", views.blog),
+    path("blog/<int:id>/", views.posting, name="posting"),
+    path('blog/new_post/', views.new_post, name="postname"),
+    path('blog/<int:id>/remove',views.remove_post, name="postname"),
     path("api/problem/<int:index>/", views.get_problem_case, name="get_problem_case"),
 ]

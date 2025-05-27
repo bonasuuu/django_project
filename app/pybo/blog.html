@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>Blog List</title>
+  </head>
+  <body>
+    <div class="header_area">{% include 'header.html' %}</div>
+    <h1>게시글 목록</h1>
+    <ul>
+        {% for list in postlist %}
+        <br>
+          연번: {{forloop.counter}} 제목: <a href="/blog/{{list.pk}}/">{{list.postname}}</a>
+        </li>
+        {% empty %}
+        <li>작성된 글이 없습니다.</li>
+      {% endfor %}
+      <br>
+      <button><a href="new_post/">글쓰기</a></button>
+      </ul>
+    </table>
+  </body>
+</html>
