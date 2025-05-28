@@ -104,8 +104,9 @@ def new_post(request):
         return render(request, 'new_post.html')
     
 def remove_post(request, id):
-    post = Post.objects.get(id=id)
-    if request.method == 'POST':
-        post.delete()
+    if request.method != 'POST':
         return redirect('/blog/')
-    return render(request, 'remove_post.html', {'Post': post})
+    
+    post = Post.objects.get(id=id)
+    post.delete()
+    return redirect('/blog/')

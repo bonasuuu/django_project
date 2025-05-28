@@ -1,18 +1,41 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+  <link rel="stylesheet" href="{% static 'new_post.css' %}" />
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>글쓰기 페이지</title>
   </head>
   <body>
-    <h1>글쓰기 페이지</h1>
-    <form method="POST" action="/blog/new_post/">
-      {% csrf_token %} 제목<br />
-      <input type="text" name="postname" placeholder="제목" required /><br />
-      내용<br />
-      <textarea rows="10" cols="50" name="contents"></textarea><br />
-      <input type="submit" value="글쓰기" />
-    </form>
+    {% include 'header.html' %}
+    <main>
+      <section>
+        <div>
+          <form method="POST" action="/blog/new_post/">
+            {% csrf_token %}
+            <div class="subsection">
+              <p>제목</p>
+              <input
+                type="text"
+                name="postname"
+                placeholder="제목을 입력하세요."
+                required
+              />
+              <p>내용</p>
+              <div class="content-wrapper">
+                <textarea
+                  name="contents"
+                  placeholder="내용을 입력하세요."
+                ></textarea>
+                <div class="submit-wrapper">
+                  <input type="submit" value="글쓰기" />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
