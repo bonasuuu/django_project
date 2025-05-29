@@ -34,15 +34,6 @@ def chatbot(request):
 
     return JsonResponse({"error": "Invalid request method"}, status=405)
 
-
-def index(request):
-    question_list = Problem.objects.all().order_by('index')
-    return render(request, 'main.html', {'question_list': question_list})
-
-def ex_list(request):
-    question_list = Problem.objects.all().order_by('index')
-    return render(request, 'ex_list.html', {'question_list': question_list})
-
 def header(request):
     return render(request, 'header.html')
 

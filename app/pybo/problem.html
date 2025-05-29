@@ -1,4 +1,4 @@
-{% load static %} {% load custom_filters %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -20,13 +20,13 @@
           {% for problem in question_list %}
           <div class="line">
             <p class="number">{{ problem.index }}</p>
-            <p class="level">{{ problem.difficulty|remove_quotes }}</p>
+            <p class="level">{{ problem.difficulty}}</p>
             <p class="title">
               <a
                 href="/solve?problem_index={{ problem.index }}"
                 class="problem-link"
               >
-                {{ problem.title|remove_quotes }}
+                {{ problem.title}}
               </a>
             </p>
           </div>
