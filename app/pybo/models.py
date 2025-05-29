@@ -10,7 +10,13 @@ class Problem(models.Model):
     difficulty = models.CharField(max_length=20, default='하')  # 난이도
     problem = models.TextField(default='문제')                # 문제 내용
     testCase = models.JSONField(default=default_testcase)        # 테스트케이스
-
-
+    
     def __str__(self):
         return f'{self.index}: {self.title} - {self.difficulty}'
+
+class Post(models.Model):
+    postname=models.CharField(max_length=50)
+    contents=models.TextField()
+    
+    def __str__(self):
+        return self.postname

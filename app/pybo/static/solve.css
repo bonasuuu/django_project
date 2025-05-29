@@ -2,6 +2,7 @@ main {
   display: flex;
   height: calc(100vh - 80px);
   width: 100%;
+  background: #fff !important;
   position: relative;
   user-select: none;
   overflow: hidden;

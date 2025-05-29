@@ -1,0 +1,71 @@
+main {
+  padding-bottom: 60px;
+}
+input,
+textarea {
+  outline: none;
+}
+section {
+  margin: 50px;
+  border-radius: 30px;
+  padding: 40px;
+  background: #ffff;
+}
+.subsection {
+  width: 100%;
+}
+.subsection input {
+  border-radius: 20px;
+  border: none;
+}
+.subsection input::placeholder {
+  background-color: white;
+  width: 100%;
+  cursor: pointer;
+  height: 20%;
+  padding-bottom: 20px;
+}
+.subsection input {
+  width: 100%;
+  font-size: 16px;
+  line-height: 48px;
+}
+.content-wrapper > textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+}
+.content-wrapper {
+  height: 300px;
+  padding-bottom: 20px;
+}
+.submit-wrapper {
+  height: 40px;
+  text-align: center;
+}
+.submit-wrapper input[type="submit"] {
+  width: 100px;
+  height: 43px;
+  background-color: blue;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  float: right;
+  align-items: center;
+  text-align: center;
+  font-size: 16px;
+}
+.submit-wrapper input[type="submit"]:hover {
+  filter: brightness(0.95);
+}
+p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: gray;
+}
+a {
+  text-align: center;
+}

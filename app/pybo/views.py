@@ -1,6 +1,7 @@
 import json
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import Problem
+from .models import Post
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 
@@ -80,3 +81,32 @@ def problem(request):
 
 def notice(request):
     return render(request, 'notice.html')
+
+def blog(request):
+    # 모든 Post를 가져와 postlist에 저장합니다
+    postlist = Post.objects.all()
+    # blog.html 페이지를 열 때, 모든 Post인 postlist도 같이 가져옵니다 
+    return render(request, 'blog.html', {'postlist':postlist})
+
+def posting(request, id):
+    post = Post.objects.get(id=id)
+    return render(request, 'posting.html', {'post':post})
+
+def new_post(request):
+    if request.method == 'POST':
+        postname = request.POST.get('postname', '')  # 안전하게 꺼냄
+        contents = request.POST.get('contents', '')
+        if postname and contents:
+            Post.objects.create(postname=postname, contents=contents)
+            return redirect('/blog/')
+        return render(request, 'blog.html')
+    else:
+        return render(request, 'new_post.html')
+    
+def remove_post(request, id):
+    if request.method != 'POST':
+        return redirect('/blog/')
+    
+    post = Post.objects.get(id=id)
+    post.delete()
+    return redirect('/blog/')

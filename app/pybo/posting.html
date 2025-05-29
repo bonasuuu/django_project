@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>게시판 상세페이지</title>
+    <link rel="stylesheet" href="{% static 'posting.css' %}" />
+  </head>
+  <body>
+    {% include 'header.html' %}
+    <main>
+      <section>
+        <div class="title"><p>제목</p> {{post.postname}}<br /></div>
+        <p>내용</p>
+        <div class="content"> {{post.contents}}<br /></div>
+        <div class="button-wrapper">
+            <form
+              id="delete-form"
+              method="post"
+              action="/blog/{{ post.id }}/remove"
+              style="display: inline"
+            >
+              {% csrf_token %}
+              <button type="button" onclick="confirmDelete()">삭제</button>
+            </form>
+            <button type="list"><a href="/blog">목록</a></button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      function confirmDelete() {
+        if (confirm("삭제하시겠습니까?")) {
+          document.getElementById("delete-form").submit();
+        }
+      }
+    </script>
+  </body>
+</html>
