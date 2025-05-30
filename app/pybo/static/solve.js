@@ -34,7 +34,7 @@ if (gutterVertical && problemSection) {
     }
   });
 }
-// ✅ CodeMirror 에디터 설정
+// CodeMirror 에디터 설정
 const codeTextarea = document.getElementById("code");
 let editor = null;
 
@@ -46,12 +46,12 @@ if (codeTextarea) {
   });
 }
 
-// ✅ Pyodide 초기화
+// Pyodide 초기화
 let pyodide = null;
 
 async function initPyodide() {
   pyodide = await loadPyodide();
-  console.log("Pyodide loaded");
+  console.log("Pyodide 로딩됨");
 }
 initPyodide();
 const problemIndex = getProblemIndexFromURL();

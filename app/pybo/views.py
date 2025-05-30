@@ -11,9 +11,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# .env파일의 'OPENAI_API_KEY' 환경변수 가져오기
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-@csrf_exempt
 def chatbot(request):
     if request.method == "POST":
         try:
@@ -22,14 +22,20 @@ def chatbot(request):
 
             response = client.chat.completions.create(
                 model="gpt-3.5-turbo",
-                messages=[{"role": "user", "content": user_message}]
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "너는 신입 개발자의 사수 역할을 맡은 시니어 개발자야. 실무에서 겪는 문제를 현실적으로 설명해주고, 핵심만 콕 집어서 알려줘. 너무 친절하지는 않지만, 필요한 건 다 말해주고 예제도 간단하게 보여줘. 불필요한 말은 줄이고, 실전 위주로 조언해줘."
+                    },
+                    {"role": "user", "content": user_message}
+                ]
             )
-
             bot_reply = response.choices[0].message.content.strip()
+
             return JsonResponse({"message": bot_reply})
 
         except Exception as e:
-            print("❌ 예외 발생:", e)
+            print("예외 발생:", e)
             return JsonResponse({"error": str(e)}, status=500)
 
     return JsonResponse({"error": "Invalid request method"}, status=405)
