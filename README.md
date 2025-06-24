@@ -1,5 +1,6 @@
 # 장고 팀 프로젝트 코딩 공부 웹 서비스(백준 기다려라)
 
+구글드라이브(시연영상, 코드, PPT): https://drive.google.com/drive/folders/1RlpLSDPDV9b33b64T0BaHag3grJCmQ-M?usp=drive_link
 ![001](https://github.com/user-attachments/assets/5b5f91f1-9a16-4e9f-889e-073cf80e6511)
 ![002](https://github.com/user-attachments/assets/cb9a6461-3073-4d26-a0a6-8b10d0934140)
 ![003](https://github.com/user-attachments/assets/d8ccb652-ea8d-41d0-9482-40539ba8acba)
